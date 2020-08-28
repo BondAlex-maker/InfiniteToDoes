@@ -4,21 +4,22 @@ import Todo from './Todo';
 import AddTodo from "./AddTodo";
 import {sublistTodo} from "../actions/todos";
 
-const TodoList = ({ todos, onToggleClick, onDeleteClick, onSListClick }) => {
+const TodoList = ({ todos, onToggleClick, onDeleteClick, onSublist }) => {
 
   return (
     <div data-test="component-todolist">
       <ul>
       {todos.map((todo) => {
-        return <Todo 
+        return <Todo
                   key={todo.id}
                   text={todo.text} 
-                  completed={todo.completed} 
+                  completed={todo.completed}
+                  sublist = {todo.sublist}
                   onToggleClick={() => onToggleClick(todo.id)}
                   onDeleteClick={() => onDeleteClick(todo.id)}
-                  onSListClick={() => onSListClick()}
-        >
-        </Todo> })}
+                  onSublist={() => onSublist(todo.id)}
+        > </Todo>
+      })}
       </ul>
     </div>
   );

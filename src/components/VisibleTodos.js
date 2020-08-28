@@ -1,7 +1,7 @@
 import TodoList from './TodoList';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import {toggleTodo, deleteTodo, sublistTodo} from '../actions/todos';
+import {toggleTodo, deleteTodo, sublistTodo, addSublist} from '../actions/todos';
 import * as constants from '../actions/constants';
 
 const getVisibleTodos = (todos, filter) => {
@@ -36,8 +36,8 @@ const mapDispatchToProps = (dispatch) => {
     onDeleteClick: (id) => {
       dispatch(deleteTodo(id));
     },
-    onSListClick: (id) => {
-      dispatch(sublistTodo(id))
+    addSublist: (id) => {
+      dispatch(addSublist(id))
     }
   };
 };

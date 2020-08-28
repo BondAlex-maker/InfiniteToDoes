@@ -6,8 +6,16 @@ const Todo = (state, action) => {
       return {
         id: action.id,
         text: action.text,
-        completed: false
+        completed: false,
+        sublist: false
       };
+    case constants.ADD_SUBLIST:
+      if (state.id === action.id){
+        return {
+          ...state,
+          sublist: !state.sublist
+        }
+      }return state;
 
     case constants.TOGGLE_TODO:
       if (state.id === action.id) {
@@ -16,6 +24,7 @@ const Todo = (state, action) => {
           completed: !state.completed
         };
       }
+
       return state;
     default:
       return state;
